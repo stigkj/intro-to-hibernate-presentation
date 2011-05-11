@@ -1,16 +1,44 @@
 !SLIDE full-page
 # JPA
-## of which Hibernate is an implementation
+## Object Relational Mapping specification for Java
+
+!SLIDE content full-page incremental
+## Background
+
+* Java Persistence API introduced in JSR-220 (EJB)
+* Hibernate/JDO/etc each have their own APIs, which was made better with JPA
+* Works both in a container or just in a plain JDK (1.5)
+
+
+!SLIDE content full-page incremental
+## What is ORM?
+
+* Qepta uses one, almost (O_M)
+* Save a object _graph_ to the database
+
+
+!SLIDE content full-page incremental
+## Why? 
+* Because you don't want the limitations of the database model to seep into your object model
+
+!SLIDE content full-page incremental
+## Features
+* POJO-based persistence model
+* Supports traditional O-O modelling concepts
+    * Inheritance, polymorphism, encapsulation, etc.
+* Standard abstract relational query language
+    * Java Persistence Query Language (JPQL)
+* Standard O/R mapping metadata
+    * Using Java SE 5 Annotations and/or XML
+* Portability across providers
+    * Toplink, Hibernate, Kodo, OpenJPA, EclipseLink
+
 
 !SLIDE content full-page incremental
 
-* What is ORM?
-* Qepta has one, almost (O_M)
-* save a object _graph_ to the database
-* Why? because you want to design your object model without thinking too much about the db model
-
 ## setup
 
+Important! do *not* use the column names in the JPQL, use the name of the fields in the java class
 * persistence.xml
 * annotations (Entity, OneToOne (*Member in NOS MD), ManyToOne, OneToMany, ManyToMany (no need for an object representing the binding table)...)
 * spring setup
