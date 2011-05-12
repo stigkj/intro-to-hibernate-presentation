@@ -10,7 +10,8 @@ import static javax.persistence.CascadeType.PERSIST;
 
 @Entity(name = "USERS")
 @NamedQuery(name = "findWithRoles",
-            query = "select u from User u where u.roles is not empty")
+            query = "select u from User u " +
+                    "where u.roles is not empty")
 public class User {
     @Id
     private String id;
@@ -18,6 +19,7 @@ public class User {
     private String firstName;
     private String lastName;
 
-    @ManyToMany(cascade = PERSIST, mappedBy = "users")
+    @ManyToMany(cascade = PERSIST,
+                mappedBy = "users")
     private Set<Role> roles;
 }

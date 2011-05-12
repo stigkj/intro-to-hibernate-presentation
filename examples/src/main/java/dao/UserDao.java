@@ -18,7 +18,9 @@ public class UserDao {
     }
 
     public List<User> findWithRoles() {
-        return entityManager.createNamedQuery("findWithRoles").getResultList();
+        return entityManager.
+                createNamedQuery("findWithRoles").
+                getResultList();
     }
 
     public void persist(User user) {
