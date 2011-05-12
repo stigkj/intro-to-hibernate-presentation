@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+repositories {
+    mavenLocal()
+    mavenRepo urls: ['http://mvn.dev.nos.no/content/groups/public', 'http://mvn.dev.nos.no/content/groups/public-snapshots']
+}
+
+dependencies {
+    def springVersion = '3.0.3.RELEASE'
+
+    compile 'javax.persistence:persistence-api:1.0'
+    compile "org.springframework:spring-beans:${springVersion}"
+    compile "org.springframework:spring-context:${springVersion}"
+    runtime "org.springframework:spring-orm:${springVersion}"
+}
+
+ideaProject {
+    javaVersion = "1.6"
+    withXml { provider ->
+        def node = provider.asNode()
+        def vcsConfig = node.component.find { it.'@name' == 'VcsDirectoryMappings' }
+        // Let IDEA figure out for itself what the VCS is by removing the whole VcsDirectoryMappings node
+        vcsConfig.replaceNode {}
+    }
+}
