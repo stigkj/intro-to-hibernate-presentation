@@ -1,0 +1,24 @@
+apply plugin : 'java'
+apply plugin : 'idea'
+apply plugin : 'groovy'
+
+repositories {
+  mavenLocal()
+  mavenRepo urls: ['http://mvn.dev.nos.no/content/groups/public', 'http://mvn.dev.nos.no/content/groups/public-snapshots']
+}
+
+libaries = [:]
+
+libaries.slf4j = ['org.slf4j:slf4j-api:1.6.1',
+        'org.slf4j:log4j-over-slf4j:1.6.1',
+        'org.slf4j:jcl-over-slf4j:1.6.1',
+        'ch.qos.logback:logback-classic:0.9.26']
+
+
+dependencies {
+    groovy "org.codehaus.groovy:groovy-all:1.7.4"
+    compile 'org.hibernate:hibernate-entitymanager:3.6.0.Final'
+    compile 'hsqldb:hsqldb:1.8.0.7'
+    compile libaries.slf4j
+    testCompile "org.spockframework:spock-core:0.5-groovy-1.7"
+}
