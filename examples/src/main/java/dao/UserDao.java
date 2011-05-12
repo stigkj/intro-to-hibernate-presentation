@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserDao {
-    @PersistenceContext(unitName = "comb")
+    @PersistenceContext(unitName = "example")
     private EntityManager entityManager;
 
     public User findById(String id) {
